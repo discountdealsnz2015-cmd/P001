@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Promo App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="manifest" href="manifest.json">
+</head>
+
+<body style="margin:0">
+
+<iframe
+  src="https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
+  style="border:none;width:100vw;height:100vh">
+</iframe>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+</script>
+
+</body>
+</html>
