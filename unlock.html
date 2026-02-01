@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unlock Promotion</title>
+<style>
+  body { font-family: Arial, sans-serif; text-align:center; padding:40px; }
+  input { font-size:18px; padding:10px; width:200px; margin-top:10px; }
+  button { font-size:18px; padding:12px 24px; margin-top:20px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer; }
+  button:hover { background:#0056b3; }
+</style>
+</head>
+<body>
+
+<h2>Unlock Your Promotion</h2>
+<p>Enter your mobile number to unlock your offer:</p>
+<input type="tel" id="mobile" placeholder="Enter mobile number">
+<br>
+<button onclick="unlockPromotion()">Unlock Now</button>
+
+<script>
+function unlockPromotion() {
+  const mobile = document.getElementById('mobile').value.trim();
+  if (!mobile) {
+    alert("Please enter your mobile number");
+    return;
+  }
+
+  // Your Apps Script endpoint
+  const scriptUrl = "https://script.google.com/macros/s/AKfycbwEv6AVtP9aNftZZWepociI-VdGzOg3i89kf2IQi9Z6mVzqoea3ATbiH4RXxedclYTN/exec";
+  const qr = "QR001";
+  const branch = "B01";
+  const promo = "P01";
+  const src = "github";
+
+  // Send mobile and scan info to Google Sheet (background)
+  fetch(`${scriptUrl}?qr=${encodeURIComponent(qr)}&b=${encodeURIComponent(branch)}&p=${encodeURIComponent(promo)}&src=${encodeURIComponent(src)}&mobile=${encodeURIComponent(mobile)}`)
+    .then(() => {
+      // Redirect to promo page hosted on GitHub Pages
+      window.location.href = "https://discountdealsnz2015-cmd.github.io/P001/";
+    })
+    .catch(err => alert("Error connecting to server. Please try again."));
+}
+</script>
+
+</body>
+</html>
